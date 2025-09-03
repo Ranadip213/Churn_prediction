@@ -14,24 +14,12 @@ The project uses a preprocessing + model pipeline, so you can feed raw Telco cus
 
 ---
 
-## 📂 Project Structure
-```plaintext
-Telco_Churn_Prediction/
-│
-├── train_churn_model.py # Script to train + save pipeline model
-├── prediction.py # Script to load model + run predictions
-├── WA_Fn-UseC_-Telco-Customer-Churn.csv # Example dataset
-├── model/ # Saved pipeline model
-│ └── churn_pipeline
-└── README.md # Project documentation
-```
----
 
 ## 🛠 Installation
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/Telco_Churn_Prediction.git
+   git clone https://github.com/Ranadip213/Telco_Churn_Prediction.git
    cd Telco_Churn_Prediction
 Install required dependencies:
 pip install pyspark pandas
