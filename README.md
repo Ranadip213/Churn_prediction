@@ -63,10 +63,11 @@ prediction: 0 = no churn, 1 = churn
 ---
 
 💡 Future Improvements
-Hyperparameter tuning with ParamGridBuilder + CrossValidator
-Try other classifiers (Random Forest, Gradient Boosted Trees)
-Deploy pipeline as a REST API (Flask/FastAPI)
-Add visualization dashboard with Streamlit
+---
+-Hyperparameter tuning with ParamGridBuilder + CrossValidator
+-Try other classifiers (Random Forest, Gradient Boosted Trees)
+-Deploy pipeline as a REST API (Flask/FastAPI)
+-Add visualization dashboard with Streamlit
 ---
 👨‍💻 Author
 Ranadip Gope
