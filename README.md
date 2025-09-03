@@ -59,11 +59,15 @@ customerID	probability	prediction
 5575-GNVDE	[0.23, 0.77]	1
 probability: likelihood of no churn (0) vs churn (1)
 prediction: 0 = no churn, 1 = churn
+
+---
+
 💡 Future Improvements
 Hyperparameter tuning with ParamGridBuilder + CrossValidator
 Try other classifiers (Random Forest, Gradient Boosted Trees)
 Deploy pipeline as a REST API (Flask/FastAPI)
 Add visualization dashboard with Streamlit
+---
 👨‍💻 Author
 Ranadip Gope
 Contact: ranadipgope157@example.com
