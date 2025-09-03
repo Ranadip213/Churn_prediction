@@ -20,11 +20,15 @@ The project uses a preprocessing + model pipeline, so you can feed raw Telco cus
 1. Clone this repository:
    ```bash
    git clone https://github.com/Ranadip213/Telco_Churn_Prediction.git
-   cd Telco_Churn_Prediction
+   
 Install required dependencies:
+```
 pip install pyspark pandas
+```
 Verify Spark installation:
+```
 pyspark --version
+```
 📊 Dataset
 We use the Telco Customer Churn dataset, which contains customer information such as:
 Demographics: gender, senior citizen, partner, dependents
