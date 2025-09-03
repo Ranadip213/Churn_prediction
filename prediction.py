@@ -1,23 +1,44 @@
-import pandas as pd
-import joblib
+from pyspark.sql import SparkSession
+from pyspark.ml import PipelineModel
 
-# ==== Load dataset ====
-data_path = "your_dataset.csv"   # Change this to your dataset file
-df = pd.read_csv(data_path)
+# -------------------------
+# Step 0: Start Spark session
+# -------------------------
+spark = SparkSession.builder.appName("ChurnPrediction").getOrCreate()
 
-# ==== Preprocess (match same preprocessing as training) ====
-# Example: drop CustomerID, encode categorical, scale numerical
-X = df.drop(columns=["customerID"])  
+# -------------------------
+# Step 1: Load saved pipeline
+# -------------------------
+model_path = "/content/model/churn_pipeline"
+pipeline_model = PipelineModel.load(model_path)
+print("✅ Pipeline loaded successfully")
 
-# ==== Load trained model ====
-model = joblib.load("trained_model.pkl")  # Change path if needed
+# -------------------------
+# Step 2: Load new dataset
+# -------------------------
+input_csv = "WA_Fn-UseC_-Telco-Customer-Churn.csv"
+df = spark.read.csv(input_csv, header=True, inferSchema=True)
 
-# ==== Run predictions ====
-predictions = model.predict(X)
+# -------------------------
+# Step 3: Preprocess + Predict
+# -------------------------
+predictions = pipeline_model.transform(df)
 
-# ==== Save results ====
-df["Predicted_Churn"] = predictions
-df.to_csv("predictions.csv", index=False)
+# -------------------------
+# Step 4: Show results
+# -------------------------
+predictions.select("customerID", "probability", "prediction").show(10, truncate=False)
+
+# -------------------------
+# Step 5: Save predictions
+# -------------------------
+predictions.select("customerID", "prediction") \
+           .toPandas() \
+           .to_csv("predictions.csv", index=False)
 
 print("✅ Predictions saved to predictions.csv")
 
+# -------------------------
+# Step 6: Stop Spark session
+# -------------------------
+spark.stop()
